@@ -27,7 +27,7 @@ const CartMenu = () => {
   const isCartOpen = useSelector((state) => state.cart.isCartOpen);
 
   const totalPrice = cart.reduce((total, item) => {
-    return total + item.count * item.attributes.price;
+    return total + item?.count * item?.attributes?.price;
   }, 0);
 
   return (
@@ -75,11 +75,11 @@ const CartMenu = () => {
                   <Box flex="1 1 60%">
                     <FlexBox mb="5px">
                       <Typography fontWeight="bold">
-                        {item.attributes.name}
+                        {item?.attributes?.name}
                       </Typography>
                       <IconButton
                         onClick={() =>
-                          dispatch(removeFromCart({ id: item.id }))
+                          dispatch(removeFromCart({ id: item?.id }))
                         }
                       >
                         <CloseIcon />

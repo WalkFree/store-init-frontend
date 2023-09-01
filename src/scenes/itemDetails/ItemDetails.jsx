@@ -26,7 +26,7 @@ const ItemDetails = () => {
 
   async function getItem() {
     const item = await fetch(
-     process.env.REACT_APP_API_URL + `/items/${itemId}?populate=image`,
+     process.env.REACT_APP_API_URL + `/api/items/${itemId}?populate=image`,
       {
         method: "GET",
       }
@@ -39,7 +39,7 @@ const ItemDetails = () => {
 
   async function getItems() {
     const items = await fetch(
-      process.env.REACT_APP_API_URL + `/items?populate=image`,
+      process.env.REACT_APP_API_URL + `/api/items?populate=image`,
       {
         method: "GET",
       }
@@ -151,7 +151,7 @@ const ItemDetails = () => {
           columnGap="1.33%"
           justifyContent="space-between"
         >
-          {items.slice(0, 4).map((item, i) => (
+          {items?.slice(0, 4).map((item, i) => (
             <Item key={`${item?.name}-${i}`} item={item} />
           ))}
         </Box>

@@ -39,7 +39,7 @@ const Checkout = () => {
   async function makePayment(values) {
     const stripe = await stripePromise;
     const requestBody = {
-      userName: [values.firstName, values.lastName].join(" "),
+      userName: [values?.firstName, values?.lastName].join(" "),
       email: values.email,
       products: cart.map(({ id, count }) => ({
         id,
@@ -47,7 +47,7 @@ const Checkout = () => {
       })),
     };
 
-    const response = await fetch(process.enn.REACT_APP_API_URL+"/orders", {
+    const response = await fetch(process.enn.REACT_APP_API_URL+"/api/orders", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(requestBody),

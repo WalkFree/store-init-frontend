@@ -62,7 +62,7 @@ const CartMenu = () => {
           {/* CART LIST */}
           <Box>
             {cart.map((item) => (
-              <Box key={`${item.attributes.name}-${item.id}`}>
+              <Box key={`${item?.attributes?.name}-${item?.id}`}>
                 <FlexBox p="15px 0">
                   <Box flex="1 1 40%">
                     <img
@@ -85,7 +85,7 @@ const CartMenu = () => {
                         <CloseIcon />
                       </IconButton>
                     </FlexBox>
-                    <Typography>{item.attributes.shortDescription}</Typography>
+                    <Typography>{item?.attributes?.shortDescription}</Typography>
                     <FlexBox m="15px 0">
                       <Box
                         display="flex"
@@ -94,22 +94,22 @@ const CartMenu = () => {
                       >
                         <IconButton
                           onClick={() =>
-                            dispatch(decreaseCount({ id: item.id }))
+                            dispatch(decreaseCount({ id: item?.id }))
                           }
                         >
                           <RemoveIcon />
                         </IconButton>
-                        <Typography>{item.count}</Typography>
+                        <Typography>{item?.count}</Typography>
                         <IconButton
                           onClick={() =>
-                            dispatch(increaseCount({ id: item.id }))
+                            dispatch(increaseCount({ id: item?.id }))
                           }
                         >
                           <AddIcon />
                         </IconButton>
                       </Box>
                       <Typography fontWeight="bold">
-                        ${item.attributes.price}
+                        ${item?.attributes?.price}
                       </Typography>
                     </FlexBox>
                   </Box>

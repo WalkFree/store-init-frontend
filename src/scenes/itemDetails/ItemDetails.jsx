@@ -33,7 +33,7 @@ const ItemDetails = () => {
     );
     const itemJson = await item.json();
     setItem(itemJson.data);
-    setImg(itemJson.data.attributes?.image?.data?.attributes?.formats?.medium?.url)
+    setImg(itemJson?.data?.attributes?.image?.data?.attributes?.formats?.medium?.url)
     // console.log(itemJson.data.attributes?.image?.data?.attributes?.formats?.medium?.url);
   }
 
@@ -152,7 +152,7 @@ const ItemDetails = () => {
           justifyContent="space-between"
         >
           {items.slice(0, 4).map((item, i) => (
-            <Item key={`${item.name}-${i}`} item={item} />
+            <Item key={`${item?.name}-${i}`} item={item} />
           ))}
         </Box>
       </Box>

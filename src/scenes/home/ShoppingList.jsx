@@ -19,10 +19,9 @@ const ShoppingList = () => {
   };
 
   async function getItems() {
-    const items = await fetch(
-      "http://localhost:1337/api/items?populate=*",
-      { method: "GET" }
-    );
+    const items = await fetch("http://localhost:1337/api/items?populate=*", {
+      method: "GET",
+    });
     const itemsJson = await items.json();
     // console.log(items);
     dispatch(setItems(itemsJson.data));
@@ -33,13 +32,13 @@ const ShoppingList = () => {
   }, []);
 
   const topRatedItems = items.filter(
-    (item) => item.attributes.category === "topRated"
+    (item) => item?.attributes?.category === "topRated"
   );
   const newArrivalsItems = items.filter(
-    (item) => item.attributes.category === "newArrivals"
+    (item) => item?.attributes?.category === "newArrivals"
   );
   const bestSellersItems = items.filter(
-    (item) => item.attributes.category === "bestSellers"
+    (item) => item?.attributes?.category === "bestSellers"
   );
 
   return (

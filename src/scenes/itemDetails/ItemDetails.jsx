@@ -26,7 +26,7 @@ const ItemDetails = () => {
 
   async function getItem() {
     const item = await fetch(
-      `http://localhost:1337/api/items/${itemId}?populate=image`,
+     process.env.REACT_APP_API_URL + `/items/${itemId}?populate=image`,
       {
         method: "GET",
       }
@@ -39,7 +39,7 @@ const ItemDetails = () => {
 
   async function getItems() {
     const items = await fetch(
-      `http://localhost:1337/api/items?populate=image`,
+      process.env.REACT_APP_API_URL + `/items?populate=image`,
       {
         method: "GET",
       }

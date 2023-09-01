@@ -20,11 +20,11 @@ const ShoppingList = () => {
 
   async function getItems() {
     const items = await fetch(
-      "http://localhost:1337/api/items?populate=image",
+      "http://localhost:1337/api/items?populate=*",
       { method: "GET" }
     );
     const itemsJson = await items.json();
-    console.log(items);
+    // console.log(items);
     dispatch(setItems(itemsJson.data));
   }
 
@@ -33,13 +33,13 @@ const ShoppingList = () => {
   }, []);
 
   const topRatedItems = items.filter(
-    (item) => item.attributes.category === "toprated"
+    (item) => item.attributes.category === "topRated"
   );
   const newArrivalsItems = items.filter(
     (item) => item.attributes.category === "newArrivals"
   );
   const bestSellersItems = items.filter(
-    (item) => item.attributes.category === "bestsellers"
+    (item) => item.attributes.category === "bestSellers"
   );
 
   return (
@@ -63,8 +63,8 @@ const ShoppingList = () => {
       >
         <Tab label="ALL" value="all" />
         <Tab label="NEW ARRIVALS" value="newArrivals" />
-        <Tab label="BEST SELLERS" value="bestsellers" />
-        <Tab label="TOP RATED" value="toprated" />
+        <Tab label="BEST SELLERS" value="bestSellers" />
+        <Tab label="TOP RATED" value="topRated" />
       </Tabs>
       <Box
         margin="0 auto"
@@ -82,11 +82,11 @@ const ShoppingList = () => {
           newArrivalsItems.map((item) => (
             <Item item={item} key={`${item.name}-${item.id}`} />
           ))}
-        {value === "bestsellers" &&
+        {value === "bestSellers" &&
           bestSellersItems.map((item) => (
             <Item item={item} key={`${item.name}-${item.id}`} />
           ))}
-        {value === "toprated" &&
+        {value === "topRated" &&
           topRatedItems.map((item) => (
             <Item item={item} key={`${item.name}-${item.id}`} />
           ))}

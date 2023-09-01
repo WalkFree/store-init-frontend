@@ -23,6 +23,7 @@ const CartMenu = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.cart);
+  console.log(cart);
   const isCartOpen = useSelector((state) => state.cart.isCartOpen);
 
   const totalPrice = cart.reduce((total, item) => {
@@ -68,7 +69,7 @@ const CartMenu = () => {
                       alt={item?.name}
                       width="123px"
                       height="164px"
-                      src={`http://localhost:1337${item?.attributes?.image?.data?.attributes?.formats?.thumbnail?.url}`}
+                      src={item?.attributes?.image?.data?.attributes?.formats?.thumbnail?.url}
                     />
                   </Box>
                   <Box flex="1 1 60%">

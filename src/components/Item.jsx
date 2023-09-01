@@ -22,12 +22,12 @@ const Item = ({ item, width }) => {
     data: {
       attributes: {
         formats: {
-          thumbnail: {url} ,
+          medium: {url} ,
         },
       },
     },
   } = image;
-  // console.log("url" + url);
+  // console.log(url);
 
   return (
     <Box width={width}>
@@ -40,7 +40,7 @@ const Item = ({ item, width }) => {
           alt={item.name}
           width="300px"
           height="400px"
-          src={`http://localhost:1337${url}`}
+          src={`${url}`}
           onClick={() => navigate(`/item/${item.id}`)}
           style={{ cursor: "pointer" }}
         />

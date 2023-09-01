@@ -17,6 +17,7 @@ const ItemDetails = () => {
   const [value, setValue] = useState("description");
   const [count, setCount] = useState(1);
   const [item, setItem] = useState(null);
+  const [img, setImg] = useState(null);
   const [items, setItems] = useState([]);
 
   const handleChange = (event, newValue) => {
@@ -32,6 +33,8 @@ const ItemDetails = () => {
     );
     const itemJson = await item.json();
     setItem(itemJson.data);
+    setImg(itemJson.data.attributes?.image?.data?.attributes?.formats?.medium?.url)
+    // console.log(itemJson.data.attributes?.image?.data?.attributes?.formats?.medium?.url);
   }
 
   async function getItems() {
@@ -43,7 +46,11 @@ const ItemDetails = () => {
     );
     const itemsJson = await items.json();
     setItems(itemsJson.data);
+    
   }
+
+  // console.log(item);
+  // console.log(item?.attributes?.image?.data?.attributes?.formats?.medium?.url);
 
   useEffect(() => {
     getItem();
@@ -59,7 +66,7 @@ const ItemDetails = () => {
             alt={item?.name}
             width="100%"
             height="100%"
-            src={`http://localhost:1337${item?.attributes?.image?.data?.attributes?.formats?.thumbnail?.url}`}
+            src={img}
             style={{ objectFit: "contain" }}
           />
         </Box>
